@@ -77,6 +77,8 @@ def main():
     graph.add_edge(4,6)
     ans = graph.get_bridges()
     print(ans)
+    
+    # Output: [(2, 3), (1, 2), (0, 1)]
 
 if __name__ == "__main__":
     try: 
