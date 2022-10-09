@@ -1,33 +1,33 @@
+#author: toilacube
 
-class Graph:
+class Find_Bridges:
     def __init__(self, num_of_nodes, directed = False, weight = False):
 
         self.num_of_nodes = num_of_nodes 
 
-        self.m_directed = directed
+        self.directed = directed
 
-        self.m_weight = weight
+        self.weight = weight
 
-        self.m_adj_list = {node: set() for node in range(self.num_of_nodes)}      
+        self.adj_list = {node: set() for node in range(self.num_of_nodes)}      
 
         self.bridge_visited = [False]*self.num_of_nodes
 
         self.list_of_bridges = []
 
     def add_edge(self, node1, node2, weight = 1):
-        if self.m_weight:
-            self.m_adj_list[node1 - 1].add((node2 - 1, weight))
-            if not self.m_directed:
-                self.m_adj_list[node2 - 1].add((node1 - 1, weight))
-
+        if self.weight:
+            self.adj_list[node1 - 1].add((node2 - 1, weight))
+            if not self.directed:
+                self.adj_list[node2 - 1].add((node1 - 1, weight))
         else:
-            self.m_adj_list[node1 - 1].add(node2 - 1)
-            if not self.m_directed:
-                self.m_adj_list[node2 - 1].add(node1 - 1)
+            self.adj_list[node1 - 1].add(node2 - 1)
+            if not self.directed:
+                self.adj_list[node2 - 1].add(node1 - 1)
 
     def print_adj_list(self):
-        for key in self.m_adj_list.keys():
-            print("Node", key, ": ", self.m_adj_list[key])
+        for key in self.adj_list.keys():
+            print("Node", key, ": ", self.adj_list[key])
 
 
     def bridge_dfs(self, node, timer, parent = -1, tin = [], low = []):
@@ -38,7 +38,7 @@ class Graph:
         timer += 1
         tin[node] = low[node] = timer + 1
 
-        for to in self.m_adj_list[node]:
+        for to in self.adj_list[node]:
             if to == parent: 
                 continue
             if self.bridge_visited[to]:
@@ -68,7 +68,7 @@ class Graph:
 
 
 def main():
-    graph = Graph(6, directed = False)
+    graph = Find_Bridges(6, directed = False)
     graph.add_edge(1,2)
     graph.add_edge(2,3)        
     graph.add_edge(3,4)   
