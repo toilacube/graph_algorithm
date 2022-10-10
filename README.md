@@ -1,1 +1,3 @@
 author: toilacube
+
+learning graph
