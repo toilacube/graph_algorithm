@@ -1,6 +1,6 @@
 #author: toilacube
 
-class Find_Bridges:
+class Find_Bridges: # https://cp-algorithms.com/graph/bridge-searching.html
     def __init__(self, num_of_nodes, directed = False, weight = False):
 
         self.num_of_nodes = num_of_nodes 
